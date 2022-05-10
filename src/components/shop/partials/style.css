@@ -1,0 +1,26 @@
+.userDropdown {
+  display: none;
+}
+
+.userDropdownBtn:hover .userDropdown {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  transition: all 1s;
+}
+
+.braintree-sheet__content--form .braintree-form__field-group.braintree-form__field-group--has-error .braintree-form__field .braintree-form__hosted-field {
+  border-color: #bfbfbf !important;
+}
+
+[data-braintree-id="number-field-error"] {
+  display: none !important;
+}
+
+[data-braintree-id="expiration-date-field-error"] {
+  display: none !important;
+}
+
+.braintree-sheet__content--form .braintree-form__field-group.braintree-form__field-group--card-type-known .braintree-form__field-secondary-icon, .braintree-sheet__content--form .braintree-form__field-group.braintree-form__field-group--has-error .braintree-form__field-error-icon, .braintree-sheet__content--form .braintree-form__field-group.braintree-form__field-group--is-focused .braintree-form__field-secondary-icon {
+  display: none !important;
+}
