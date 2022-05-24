@@ -24,6 +24,7 @@ const Routes = (props) => {
         <Route exact path="/" component={Home} />
         <Route exact path="/wish-list" component={WishList} />
         <Route exact path="/products/:id" component={ProductDetails} />
+        {/* <Route exact path="/3dview/:id" component={VisualProduct} /> */}
         <Route
           exact
           path="/products/category/:catId"

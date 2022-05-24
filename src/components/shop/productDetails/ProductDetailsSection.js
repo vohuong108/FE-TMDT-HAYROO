@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import { Fragment, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ProductDetailsContext } from "./index";
 import { LayoutContext } from "../layout";
@@ -11,6 +11,10 @@ import { cartListProduct } from "../partials/FetchApi";
 import { isWishReq, unWishReq, isWish } from "../home/Mixins";
 import { updateQuantity, slideImage, addToCart, cartList } from "./Mixins";
 import { totalCost } from "../partials/Mixins";
+import { Button, Modal } from "antd";
+import Bicycle from "../../3d/Bicycle";
+import Robot from "../../3d/Robot";
+import Chair from "../../3d/Chair";
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -415,6 +419,8 @@ const ProductDetailsSection = (props) => {
                   )}
                 </Fragment>
               )}
+              <View3D />
+              
               {/* Incart and out of stock button End */}
             </div>
           </div>
@@ -425,5 +431,52 @@ const ProductDetailsSection = (props) => {
     </Fragment>
   );
 };
+
+const View3D = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  let { id } = useParams();
+  console.log(id)
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handle3DScence = () => {
+    if(id === '628d06aaae25e61fd41aeaae') return <Bicycle />
+    if(id === '628d0951ae25e61fd41aeafc') return <Robot />
+    if(id === '628d0f12c159a11f68011fac') return <Chair />
+    else return <Chair />
+  }
+
+  return (
+    <div style={{display: 'flex', justifyContent: 'center'}}>
+      <Button 
+        type="primary" 
+        shape="round" 
+        onClick={showModal}
+        style={{ marginTop: '10px' }}
+      >
+        View 3D
+      </Button>
+      <Modal 
+      title="3D view" 
+      visible={isModalVisible} 
+      onOk={handleOk} 
+      onCancel={handleCancel}
+      width={900}
+      >
+        {handle3DScence() }
+      </Modal>
+    </div>
+  );
+}
 
 export default ProductDetailsSection;
